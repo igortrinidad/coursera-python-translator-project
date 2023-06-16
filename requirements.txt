@@ -1,0 +1,5 @@
+Flask==1.1.2
+Flask-WTF==0.14.3
+python-dotenv==0.13.0
+pyJWT==1.7.1
+deep_translator==1.5.0
