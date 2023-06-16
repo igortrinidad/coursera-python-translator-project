@@ -17,6 +17,7 @@ class AppTestCase(unittest.TestCase):
         response = self.app.get('/englishToFrench?textToTranslate=Hello')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data.decode('utf-8'), "Bonjour!")
+        self.assertNotEqual(response.data.decode('utf-8'), "Bom dia!")
         mock_translate.assert_called_with('Hello')
 
     @patch('deep_translator.MyMemoryTranslator.translate')
@@ -25,6 +26,7 @@ class AppTestCase(unittest.TestCase):
         response = self.app.get('/frenchToEnglish?textToTranslate=Bonjour')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data.decode('utf-8'), "Hello!")
+        self.assertNotEqual(response.data.decode('utf-8'), "Olá")
         mock_translate.assert_called_with('Bonjour')
 
     def test_renderIndexPage(self):
